@@ -7,14 +7,6 @@ jobs:
     steps:
     - uses: southrop/html-to-pdf-action@master
       with:
-        inputPaths:
-          - index.html
-          - about/index.html
+        inputPaths: 'index.html,about/index.html'
         outputPath: pdf/print.pdf
-        puppeteerOptions:
-          format: A4
-          margin:
-            top: 10mm
-            left: 10mm
-            right: 10mm
-            bottom: 10mm
+        puppeteerOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'

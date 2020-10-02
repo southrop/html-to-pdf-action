@@ -3,16 +3,16 @@ description: Github Action to print HTML files to PDF format using Puppeteer
 author: Southrop
 inputs:
   inputPaths:
-    description: List of paths of the HTML files to print
+    description: A comma separated list of paths of the HTML files to print
     required: true
   outputPath:
     description: The desired path in the repo for the resultant PDF to be added to
     required: false
-    default: ''
+    default: 'output.pdf'
   puppeteerOptions:
-    description: Options to be passed directly to Puppeteer
+    description: JSON options to be passed directly to Puppeteer
     required: false
-    default: null
+    default: '{}'
 runs:
   using: 'node12'
   main: 'dist/index.js'

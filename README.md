@@ -4,9 +4,9 @@ A Github Action to print HTML files to PDF format using Puppeteer.
 
 ## Inputs
 
-* `inputPaths` - (Required) List of paths of the HTML files to print
+* `inputPaths` - (Required) A comma separated list of paths of the HTML files to print
 * `outputPath`- (Optional) The desired path in the repo for the resultant PDF to be added to
-* `puppeteerOptions`- (Optional) Options to be passed directly to Puppeteer (see [Puppeteer API](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions))
+* `puppeteerOptions`- (Optional) JSON options to be passed directly to Puppeteer (see [Puppeteer API](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions))
 
 ## Example
 
@@ -28,17 +28,9 @@ jobs:
             ${{ runner.os }}-node-
       - uses: southrop/html-to-pdf-action@v1
         with:
-          inputPaths: # Can also be a single string instead of a list
-            - index.html
-            - about/index.html
+          inputPaths: 'index.html,about/index.html'
           outputPath: pdf/print.pdf
-          puppeteerOptions:
-            format: A4
-            margin:
-              top: 10mm
-              left: 10mm
-              right: 10mm
-              bottom: 10mm
+          puppeteerOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
       - run: |
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"

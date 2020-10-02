@@ -434,6 +434,8 @@ function run() {
         console.log('inputPaths: ' + inputPaths);
         console.log('outputPath: ' + outputPath);
         console.log('options: ' + options);
+        const inputArray = inputPaths.split(",");
+        console.log(inputArray.toString());
     });
 }
 run();

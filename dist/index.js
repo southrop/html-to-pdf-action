@@ -434,8 +434,12 @@ function run() {
         console.log('inputPaths: ' + inputPaths);
         console.log('outputPath: ' + outputPath);
         console.log('options: ' + options);
+        const optionsObj = JSON.parse(options);
+        console.log('optionsObj: ' + JSON.stringify(optionsObj, null, 4));
         const inputArray = inputPaths.split(",");
-        console.log(inputArray.toString());
+        inputArray.forEach(input => {
+            console.log('Input: ' + input);
+        });
     });
 }
 run();

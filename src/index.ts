@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import { Server } from './server'
 import PDFMerger from 'pdf-merger-js'
-import * as puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer'
 import { PORT } from './constants'
 
 async function run(): Promise<void> {
@@ -60,7 +60,7 @@ async function run(): Promise<void> {
 
         await merger.save(outputPath)
     } catch (error) {
-        core.error(error)
+        core.setFailed(`Action failed with error: ${error}`)
     }
 }
 

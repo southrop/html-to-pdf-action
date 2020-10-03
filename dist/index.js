@@ -55043,7 +55043,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(2186));
 const server_1 = __webpack_require__(6660);
 const pdf_merger_js_1 = __importDefault(__webpack_require__(1502));
-const puppeteer = __importStar(__webpack_require__(9014));
+const puppeteer_1 = __importDefault(__webpack_require__(9014));
 const constants_1 = __webpack_require__(9042);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -55056,7 +55056,7 @@ function run() {
             console.log('options: ' + options);
             const pdfOptions = JSON.parse(options);
             console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4));
-            const browser = yield puppeteer.launch();
+            const browser = yield puppeteer_1.default.launch();
             const tab = yield browser.newPage();
             const merger = new pdf_merger_js_1.default();
             const inputArray = inputPaths.split(',');
@@ -55091,7 +55091,7 @@ function run() {
             yield merger.save(outputPath);
         }
         catch (error) {
-            core.error(error);
+            core.setFailed(`Action failed with error: ${error}`);
         }
     });
 }

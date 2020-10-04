@@ -55057,6 +55057,7 @@ function run() {
             const pdfOptions = JSON.parse(options);
             console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4));
             const browser = yield puppeteer_1.default.launch({
+                executablePath: puppeteer_1.default.executablePath(),
                 args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
             const tab = yield browser.newPage();

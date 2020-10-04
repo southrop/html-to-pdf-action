@@ -3496,7 +3496,7 @@ module.exports = function () {
 const debug = __webpack_require__(9669)('extract-zip')
 // eslint-disable-next-line node/no-unsupported-features/node-builtins
 const { createWriteStream, promises: fs } = __webpack_require__(5747)
-const getStream = __webpack_require__(1766)
+const getStream = __webpack_require__(1055)
 const path = __webpack_require__(5622)
 const { promisify } = __webpack_require__(1669)
 const stream = __webpack_require__(2413)
@@ -5184,134 +5184,6 @@ exports.realpath = function realpath(p, cache, cb) {
     start();
   }
 };
-
-
-/***/ }),
-
-/***/ 1585:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-const {PassThrough: PassThroughStream} = __webpack_require__(2413);
-
-module.exports = options => {
-	options = {...options};
-
-	const {array} = options;
-	let {encoding} = options;
-	const isBuffer = encoding === 'buffer';
-	let objectMode = false;
-
-	if (array) {
-		objectMode = !(encoding || isBuffer);
-	} else {
-		encoding = encoding || 'utf8';
-	}
-
-	if (isBuffer) {
-		encoding = null;
-	}
-
-	const stream = new PassThroughStream({objectMode});
-
-	if (encoding) {
-		stream.setEncoding(encoding);
-	}
-
-	let length = 0;
-	const chunks = [];
-
-	stream.on('data', chunk => {
-		chunks.push(chunk);
-
-		if (objectMode) {
-			length = chunks.length;
-		} else {
-			length += chunk.length;
-		}
-	});
-
-	stream.getBufferedValue = () => {
-		if (array) {
-			return chunks;
-		}
-
-		return isBuffer ? Buffer.concat(chunks, length) : chunks.join('');
-	};
-
-	stream.getBufferedLength = () => length;
-
-	return stream;
-};
-
-
-/***/ }),
-
-/***/ 1766:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-const {constants: BufferConstants} = __webpack_require__(4293);
-const pump = __webpack_require__(6387);
-const bufferStream = __webpack_require__(1585);
-
-class MaxBufferError extends Error {
-	constructor() {
-		super('maxBuffer exceeded');
-		this.name = 'MaxBufferError';
-	}
-}
-
-async function getStream(inputStream, options) {
-	if (!inputStream) {
-		return Promise.reject(new Error('Expected a stream'));
-	}
-
-	options = {
-		maxBuffer: Infinity,
-		...options
-	};
-
-	const {maxBuffer} = options;
-
-	let stream;
-	await new Promise((resolve, reject) => {
-		const rejectPromise = error => {
-			// Don't retrieve an oversized buffer.
-			if (error && stream.getBufferedLength() <= BufferConstants.MAX_LENGTH) {
-				error.bufferedData = stream.getBufferedValue();
-			}
-
-			reject(error);
-		};
-
-		stream = pump(inputStream, bufferStream(options), error => {
-			if (error) {
-				rejectPromise(error);
-				return;
-			}
-
-			resolve();
-		});
-
-		stream.on('data', () => {
-			if (stream.getBufferedLength() > maxBuffer) {
-				rejectPromise(new MaxBufferError());
-			}
-		});
-	});
-
-	return stream.getBufferedValue();
-}
-
-module.exports = getStream;
-// TODO: Remove this for the next major release
-module.exports.default = getStream;
-module.exports.buffer = (stream, options) => getStream(stream, {...options, encoding: 'buffer'});
-module.exports.array = (stream, options) => getStream(stream, {...options, array: true});
-module.exports.MaxBufferError = MaxBufferError;
 
 
 /***/ }),
@@ -66703,10 +66575,10 @@ module.exports = eval("require")("bufferutil");
 
 /***/ }),
 
-/***/ 6387:
+/***/ 1055:
 /***/ ((module) => {
 
-module.exports = eval("require")("pump");
+module.exports = eval("require")("get-stream");
 
 
 /***/ }),
@@ -66739,7 +66611,7 @@ module.exports = {"i8":"2.4.1"};
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"_from\":\"puppeteer@v1.15.0\",\"_id\":\"puppeteer@1.15.0\",\"_inBundle\":false,\"_integrity\":\"sha512-D2y5kwA9SsYkNUmcBzu9WZ4V1SGHiQTmgvDZSx6sRYFsgV25IebL4V6FaHjF6MbwLK9C6f3G3pmck9qmwM8H3w==\",\"_location\":\"/puppeteer\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"puppeteer@v1.15.0\",\"name\":\"puppeteer\",\"escapedName\":\"puppeteer\",\"rawSpec\":\"v1.15.0\",\"saveSpec\":null,\"fetchSpec\":\"v1.15.0\"},\"_requiredBy\":[\"#USER\",\"/\"],\"_resolved\":\"https://registry.npmjs.org/puppeteer/-/puppeteer-1.15.0.tgz\",\"_shasum\":\"1680fac13e51f609143149a5b7fa99eec392b34f\",\"_spec\":\"puppeteer@v1.15.0\",\"_where\":\"E:\\\\Projects\\\\Otaku\\\\html-to-pdf-action\",\"author\":{\"name\":\"The Chromium Authors\"},\"browser\":{\"./lib/BrowserFetcher.js\":false,\"./node6/lib/Puppeteer\":false,\"ws\":\"./utils/browser/WebSocket\",\"fs\":false,\"child_process\":false,\"rimraf\":false,\"readline\":false},\"bugs\":{\"url\":\"https://github.com/GoogleChrome/puppeteer/issues\"},\"bundleDependencies\":false,\"dependencies\":{\"debug\":\"^4.1.0\",\"extract-zip\":\"^1.6.6\",\"https-proxy-agent\":\"^2.2.1\",\"mime\":\"^2.0.3\",\"progress\":\"^2.0.1\",\"proxy-from-env\":\"^1.0.0\",\"rimraf\":\"^2.6.1\",\"ws\":\"^6.1.0\"},\"deprecated\":false,\"description\":\"A high-level API to control headless Chrome over the DevTools Protocol\",\"devDependencies\":{\"@types/debug\":\"0.0.31\",\"@types/extract-zip\":\"^1.6.2\",\"@types/mime\":\"^2.0.0\",\"@types/node\":\"^8.10.34\",\"@types/rimraf\":\"^2.0.2\",\"@types/ws\":\"^6.0.1\",\"commonmark\":\"^0.28.1\",\"cross-env\":\"^5.0.5\",\"eslint\":\"^5.15.1\",\"esprima\":\"^4.0.0\",\"jpeg-js\":\"^0.3.4\",\"minimist\":\"^1.2.0\",\"ncp\":\"^2.0.0\",\"pixelmatch\":\"^4.0.2\",\"pngjs\":\"^3.3.3\",\"text-diff\":\"^1.0.1\",\"typescript\":\"3.2.2\"},\"engines\":{\"node\":\">=6.4.0\"},\"homepage\":\"https://github.com/GoogleChrome/puppeteer#readme\",\"license\":\"Apache-2.0\",\"main\":\"index.js\",\"name\":\"puppeteer\",\"puppeteer\":{\"chromium_revision\":\"650583\"},\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/GoogleChrome/puppeteer.git\"},\"scripts\":{\"apply-next-version\":\"node utils/apply_next_version.js\",\"build\":\"node utils/node6-transform/index.js && node utils/doclint/generate_types\",\"bundle\":\"npx browserify -r ./index.js:puppeteer -o utils/browser/puppeteer-web.js\",\"coverage\":\"cross-env COVERAGE=true npm run unit\",\"debug-unit\":\"node --inspect-brk test/test.js\",\"doc\":\"node utils/doclint/cli.js\",\"funit\":\"BROWSER=firefox node test/test.js\",\"install\":\"node install.js\",\"lint\":\"([ \\\"$CI\\\" = true ] && eslint --quiet -f codeframe . || eslint .) && npm run tsc && npm run doc\",\"prepublishOnly\":\"npm run build\",\"test\":\"npm run lint --silent && npm run coverage && npm run test-doclint && npm run test-node6-transformer && npm run test-types\",\"test-doclint\":\"node utils/doclint/check_public_api/test/test.js && node utils/doclint/preprocessor/test.js\",\"test-node6-transformer\":\"node utils/node6-transform/test/test.js\",\"test-types\":\"node utils/doclint/generate_types && npx -p typescript@2.1 tsc -p utils/doclint/generate_types/test/\",\"tsc\":\"tsc -p .\",\"unit\":\"node test/test.js\",\"unit-bundle\":\"node utils/browser/test.js\",\"unit-node6\":\"node node6/test/test.js\"},\"version\":\"1.15.0\"}");
+module.exports = JSON.parse("{\"_from\":\"puppeteer@1.15.0\",\"_id\":\"puppeteer@1.15.0\",\"_inBundle\":false,\"_integrity\":\"sha512-D2y5kwA9SsYkNUmcBzu9WZ4V1SGHiQTmgvDZSx6sRYFsgV25IebL4V6FaHjF6MbwLK9C6f3G3pmck9qmwM8H3w==\",\"_location\":\"/puppeteer\",\"_phantomChildren\":{},\"_requested\":{\"type\":\"version\",\"registry\":true,\"raw\":\"puppeteer@1.15.0\",\"name\":\"puppeteer\",\"escapedName\":\"puppeteer\",\"rawSpec\":\"1.15.0\",\"saveSpec\":null,\"fetchSpec\":\"1.15.0\"},\"_requiredBy\":[\"#DEV:/\",\"#USER\"],\"_resolved\":\"https://registry.npmjs.org/puppeteer/-/puppeteer-1.15.0.tgz\",\"_shasum\":\"1680fac13e51f609143149a5b7fa99eec392b34f\",\"_spec\":\"puppeteer@1.15.0\",\"_where\":\"E:\\\\Projects\\\\Otaku\\\\html-to-pdf-action\",\"author\":{\"name\":\"The Chromium Authors\"},\"browser\":{\"./lib/BrowserFetcher.js\":false,\"./node6/lib/Puppeteer\":false,\"ws\":\"./utils/browser/WebSocket\",\"fs\":false,\"child_process\":false,\"rimraf\":false,\"readline\":false},\"bugs\":{\"url\":\"https://github.com/GoogleChrome/puppeteer/issues\"},\"bundleDependencies\":false,\"dependencies\":{\"debug\":\"^4.1.0\",\"extract-zip\":\"^1.6.6\",\"https-proxy-agent\":\"^2.2.1\",\"mime\":\"^2.0.3\",\"progress\":\"^2.0.1\",\"proxy-from-env\":\"^1.0.0\",\"rimraf\":\"^2.6.1\",\"ws\":\"^6.1.0\"},\"deprecated\":false,\"description\":\"A high-level API to control headless Chrome over the DevTools Protocol\",\"devDependencies\":{\"@types/debug\":\"0.0.31\",\"@types/extract-zip\":\"^1.6.2\",\"@types/mime\":\"^2.0.0\",\"@types/node\":\"^8.10.34\",\"@types/rimraf\":\"^2.0.2\",\"@types/ws\":\"^6.0.1\",\"commonmark\":\"^0.28.1\",\"cross-env\":\"^5.0.5\",\"eslint\":\"^5.15.1\",\"esprima\":\"^4.0.0\",\"jpeg-js\":\"^0.3.4\",\"minimist\":\"^1.2.0\",\"ncp\":\"^2.0.0\",\"pixelmatch\":\"^4.0.2\",\"pngjs\":\"^3.3.3\",\"text-diff\":\"^1.0.1\",\"typescript\":\"3.2.2\"},\"engines\":{\"node\":\">=6.4.0\"},\"homepage\":\"https://github.com/GoogleChrome/puppeteer#readme\",\"license\":\"Apache-2.0\",\"main\":\"index.js\",\"name\":\"puppeteer\",\"puppeteer\":{\"chromium_revision\":\"650583\"},\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/GoogleChrome/puppeteer.git\"},\"scripts\":{\"apply-next-version\":\"node utils/apply_next_version.js\",\"build\":\"node utils/node6-transform/index.js && node utils/doclint/generate_types\",\"bundle\":\"npx browserify -r ./index.js:puppeteer -o utils/browser/puppeteer-web.js\",\"coverage\":\"cross-env COVERAGE=true npm run unit\",\"debug-unit\":\"node --inspect-brk test/test.js\",\"doc\":\"node utils/doclint/cli.js\",\"funit\":\"BROWSER=firefox node test/test.js\",\"install\":\"node install.js\",\"lint\":\"([ \\\"$CI\\\" = true ] && eslint --quiet -f codeframe . || eslint .) && npm run tsc && npm run doc\",\"prepublishOnly\":\"npm run build\",\"test\":\"npm run lint --silent && npm run coverage && npm run test-doclint && npm run test-node6-transformer && npm run test-types\",\"test-doclint\":\"node utils/doclint/check_public_api/test/test.js && node utils/doclint/preprocessor/test.js\",\"test-node6-transformer\":\"node utils/node6-transform/test/test.js\",\"test-types\":\"node utils/doclint/generate_types && npx -p typescript@2.1 tsc -p utils/doclint/generate_types/test/\",\"tsc\":\"tsc -p .\",\"unit\":\"node test/test.js\",\"unit-bundle\":\"node utils/browser/test.js\",\"unit-node6\":\"node node6/test/test.js\"},\"version\":\"1.15.0\"}");
 
 /***/ }),
 

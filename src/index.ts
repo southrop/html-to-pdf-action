@@ -38,19 +38,19 @@ async function run(): Promise<void> {
             server = new Server(process.cwd()) // start local server
         }
 
-        inputArray.forEach(async (input, index) => {
-            console.log(`Printing page ${index}: ${input}`)
+        for (const index in inputArray) {
+            console.log(`Printing page ${index}: ${inputArray[index]}`)
 
-            const pageUrl = input.startsWith('http')
-                ? input
-                : `http://localhost:${PORT}/${input}`
+            const pageUrl = inputArray[index].startsWith('http')
+                ? inputArray[index]
+                : `http://localhost:${PORT}/${inputArray[index]}`
             await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
 
             const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
             await tab.pdf(pageOptions)
 
             merger.add(`page${index}.pdf`)
-        })
+        }
 
         if (server !== undefined) {
             server.close()

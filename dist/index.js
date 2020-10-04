@@ -55074,16 +55074,16 @@ function run() {
             if (isLocal) {
                 server = new server_1.Server(process.cwd()); // start local server
             }
-            inputArray.forEach((input, index) => __awaiter(this, void 0, void 0, function* () {
-                console.log(`Printing page ${index}: ${input}`);
-                const pageUrl = input.startsWith('http')
-                    ? input
-                    : `http://localhost:${constants_1.PORT}/${input}`;
+            for (const index in inputArray) {
+                console.log(`Printing page ${index}: ${inputArray[index]}`);
+                const pageUrl = inputArray[index].startsWith('http')
+                    ? inputArray[index]
+                    : `http://localhost:${constants_1.PORT}/${inputArray[index]}`;
                 yield tab.goto(pageUrl, { waitUntil: 'networkidle0' });
                 const pageOptions = Object.assign(Object.assign({}, pdfOptions), { path: `./page${index}.pdf` });
                 yield tab.pdf(pageOptions);
                 merger.add(`page${index}.pdf`);
-            }));
+            }
             if (server !== undefined) {
                 server.close();
             }

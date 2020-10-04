@@ -39,16 +39,17 @@ async function run(): Promise<void> {
         }
 
         for (const index in inputArray) {
-            console.log(`Printing page ${index}: ${inputArray[index]}`)
-
+            console.log(`Loading page ${index}: ${inputArray[index]}`)
             const pageUrl = inputArray[index].startsWith('http')
                 ? inputArray[index]
                 : `http://localhost:${PORT}/${inputArray[index]}`
             await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
 
+            console.log(`Printing page ${index} to ./page${index}.pdf`)
             //const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
             await tab.pdf({ path: `./page${index}.pdf` })
 
+            console.log(`Adding page ${index} to binder`)
             merger.add(`page${index}.pdf`)
         }
 

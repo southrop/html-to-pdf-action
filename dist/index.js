@@ -66434,13 +66434,15 @@ function run() {
                 server = new server_1.Server(process.cwd()); // start local server
             }
             for (const index in inputArray) {
-                console.log(`Printing page ${index}: ${inputArray[index]}`);
+                console.log(`Loading page ${index}: ${inputArray[index]}`);
                 const pageUrl = inputArray[index].startsWith('http')
                     ? inputArray[index]
                     : `http://localhost:${constants_1.PORT}/${inputArray[index]}`;
                 yield tab.goto(pageUrl, { waitUntil: 'networkidle0' });
+                console.log(`Printing page ${index} to ./page${index}.pdf`);
                 //const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
                 yield tab.pdf({ path: `./page${index}.pdf` });
+                console.log(`Adding page ${index} to binder`);
                 merger.add(`page${index}.pdf`);
             }
             if (server !== undefined) {
@@ -66467,14 +66469,30 @@ run();
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Server = void 0;
-const fs_1 = __importDefault(__webpack_require__(5747));
-const http_1 = __importDefault(__webpack_require__(8605));
-const path_1 = __importDefault(__webpack_require__(5622));
+const fs = __importStar(__webpack_require__(5747));
+const http = __importStar(__webpack_require__(8605));
+const path = __importStar(__webpack_require__(5622));
 const constants_1 = __webpack_require__(9042);
 class Server {
     constructor(rootPath) {
@@ -66495,16 +66513,16 @@ class Server {
             '.otf': 'application/font-otf',
             '.wasm': 'application/wasm'
         };
-        this.server = http_1.default
+        this.server = http
             .createServer((request, response) => {
             console.log('Request: ' + request.url);
-            let filePath = path_1.default.join(rootPath, request.url || '');
+            let filePath = path.join(rootPath, request.url || '');
             if (request.url === '/') {
-                filePath = path_1.default.join(rootPath, 'index.html');
+                filePath = path.join(rootPath, 'index.html');
             }
-            const extname = String(path_1.default.extname(filePath)).toLowerCase();
+            const extname = String(path.extname(filePath)).toLowerCase();
             const contentType = this.mimeTypes[extname] || 'application/octet-stream';
-            fs_1.default.readFile(filePath, (error, content) => {
+            fs.readFile(filePath, (error, content) => {
                 if (error) {
                     console.log('Server Error: ' + error);
                     if (error.code === 'ENOENT') {

@@ -31610,7 +31610,7 @@ module.exports = pump
 
 /***/ }),
 
-/***/ 9014:
+/***/ 3435:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /**
@@ -31640,13 +31640,13 @@ module.exports = pump
  * This means that we can publish to CJS and ESM whilst maintaining the expected
  * import behaviour for CJS and ESM users.
  */
-const puppeteerExport = __webpack_require__(1662);
+const puppeteerExport = __webpack_require__(9574);
 module.exports = puppeteerExport.default;
 
 
 /***/ }),
 
-/***/ 7098:
+/***/ 5503:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -32014,7 +32014,7 @@ class AXNode {
 
 /***/ }),
 
-/***/ 3956:
+/***/ 755:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -32036,11 +32036,11 @@ class AXNode {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BrowserContext = exports.Browser = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const Target_js_1 = __webpack_require__(3632);
-const EventEmitter_js_1 = __webpack_require__(5039);
-const Connection_js_1 = __webpack_require__(3772);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const Target_js_1 = __webpack_require__(1501);
+const EventEmitter_js_1 = __webpack_require__(3112);
+const Connection_js_1 = __webpack_require__(9504);
 /**
  * A Browser is created when Puppeteer connects to a Chromium instance, either through
  * {@link Puppeteer.launch} or {@link Puppeteer.connect}.
@@ -32542,7 +32542,7 @@ exports.BrowserContext = BrowserContext;
 
 /***/ }),
 
-/***/ 3772:
+/***/ 9504:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -32564,11 +32564,11 @@ exports.CDPSession = exports.CDPSessionEmittedEvents = exports.Connection = expo
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const assert_js_1 = __webpack_require__(7692);
-const Debug_js_1 = __webpack_require__(5490);
+const assert_js_1 = __webpack_require__(2279);
+const Debug_js_1 = __webpack_require__(7061);
 const debugProtocolSend = Debug_js_1.debug('puppeteer:protocol:SEND ►');
 const debugProtocolReceive = Debug_js_1.debug('puppeteer:protocol:RECV ◀');
-const EventEmitter_js_1 = __webpack_require__(5039);
+const EventEmitter_js_1 = __webpack_require__(3112);
 /**
  * Internal events that the Connection class emits.
  *
@@ -32821,7 +32821,7 @@ function rewriteError(error, message) {
 
 /***/ }),
 
-/***/ 9213:
+/***/ 9770:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -32887,7 +32887,7 @@ exports.ConsoleMessage = ConsoleMessage;
 
 /***/ }),
 
-/***/ 1771:
+/***/ 7334:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -32909,9 +32909,9 @@ exports.ConsoleMessage = ConsoleMessage;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Coverage = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const ExecutionContext_js_1 = __webpack_require__(4164);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const ExecutionContext_js_1 = __webpack_require__(6823);
 /**
  * The Coverage class provides methods to gathers information about parts of
  * JavaScript and CSS that were used by the page.
@@ -33214,7 +33214,7 @@ function convertToDisjointRanges(nestedRanges) {
 
 /***/ }),
 
-/***/ 6535:
+/***/ 3370:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -33236,12 +33236,12 @@ function convertToDisjointRanges(nestedRanges) {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DOMWorld = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const LifecycleWatcher_js_1 = __webpack_require__(7759);
-const Errors_js_1 = __webpack_require__(9749);
-const QueryHandler_js_1 = __webpack_require__(446);
-const environment_js_1 = __webpack_require__(2777);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const LifecycleWatcher_js_1 = __webpack_require__(5136);
+const Errors_js_1 = __webpack_require__(3162);
+const QueryHandler_js_1 = __webpack_require__(9336);
+const environment_js_1 = __webpack_require__(5819);
 /**
  * @internal
  */
@@ -33759,7 +33759,7 @@ async function waitForPredicatePageFunction(predicateBody, polling, timeout, ...
 
 /***/ }),
 
-/***/ 5490:
+/***/ 7061:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -33781,7 +33781,7 @@ async function waitForPredicatePageFunction(predicateBody, polling, timeout, ...
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.debug = void 0;
-const environment_js_1 = __webpack_require__(2777);
+const environment_js_1 = __webpack_require__(5819);
 /**
  * A debug function that can be used in any environment.
  *
@@ -33847,7 +33847,7 @@ exports.debug = (prefix) => {
 
 /***/ }),
 
-/***/ 6134:
+/***/ 2324:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -34731,7 +34731,7 @@ for (const device of devices)
 
 /***/ }),
 
-/***/ 2076:
+/***/ 8309:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -34753,7 +34753,7 @@ for (const device of devices)
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Dialog = void 0;
-const assert_js_1 = __webpack_require__(7692);
+const assert_js_1 = __webpack_require__(2279);
 /**
  * Dialog instances are dispatched by the {@link Page} via the `dialog` event.
  *
@@ -34835,7 +34835,7 @@ exports.Dialog = Dialog;
 
 /***/ }),
 
-/***/ 7064:
+/***/ 7421:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -34880,7 +34880,7 @@ exports.EmulationManager = EmulationManager;
 
 /***/ }),
 
-/***/ 9749:
+/***/ 3162:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -34929,7 +34929,7 @@ exports.puppeteerErrors = {
 
 /***/ }),
 
-/***/ 5039:
+/***/ 3112:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -34939,7 +34939,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventEmitter = void 0;
-const index_js_1 = __importDefault(__webpack_require__(8787));
+const index_js_1 = __importDefault(__webpack_require__(5108));
 /**
  * The EventEmitter class that many Puppeteer classes extend.
  *
@@ -35053,7 +35053,7 @@ exports.EventEmitter = EventEmitter;
 
 /***/ }),
 
-/***/ 4164:
+/***/ 6823:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -35075,9 +35075,9 @@ exports.EventEmitter = EventEmitter;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ExecutionContext = exports.EVALUATION_SCRIPT_URL = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const JSHandle_js_1 = __webpack_require__(9724);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const JSHandle_js_1 = __webpack_require__(1133);
 exports.EVALUATION_SCRIPT_URL = '__puppeteer_evaluation_script__';
 const SOURCE_URL_REGEX = /^[\040\t]*\/\/[@#] sourceURL=\s*(\S*?)\s*$/m;
 /**
@@ -35378,7 +35378,7 @@ exports.ExecutionContext = ExecutionContext;
 
 /***/ }),
 
-/***/ 7947:
+/***/ 3176:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -35400,7 +35400,7 @@ exports.ExecutionContext = ExecutionContext;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.FileChooser = void 0;
-const assert_js_1 = __webpack_require__(7692);
+const assert_js_1 = __webpack_require__(2279);
 /**
  * File choosers let you react to the page requesting for a file.
  * @remarks
@@ -35456,7 +35456,7 @@ exports.FileChooser = FileChooser;
 
 /***/ }),
 
-/***/ 5637:
+/***/ 8045:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -35478,14 +35478,14 @@ exports.FileChooser = FileChooser;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Frame = exports.FrameManager = exports.FrameManagerEmittedEvents = void 0;
-const Debug_js_1 = __webpack_require__(5490);
-const EventEmitter_js_1 = __webpack_require__(5039);
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const ExecutionContext_js_1 = __webpack_require__(4164);
-const LifecycleWatcher_js_1 = __webpack_require__(7759);
-const DOMWorld_js_1 = __webpack_require__(6535);
-const NetworkManager_js_1 = __webpack_require__(8965);
+const Debug_js_1 = __webpack_require__(7061);
+const EventEmitter_js_1 = __webpack_require__(3112);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const ExecutionContext_js_1 = __webpack_require__(6823);
+const LifecycleWatcher_js_1 = __webpack_require__(5136);
+const DOMWorld_js_1 = __webpack_require__(3370);
+const NetworkManager_js_1 = __webpack_require__(377);
 const UTILITY_WORLD_NAME = '__puppeteer_utility_world__';
 /**
  * We use symbols to prevent external parties listening to these events.
@@ -36429,15 +36429,15 @@ function assertNoLegacyNavigationOptions(options) {
 
 /***/ }),
 
-/***/ 7102:
+/***/ 6662:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HTTPRequest = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
 /**
  *
  * Represents an HTTP request sent by a page.
@@ -36861,14 +36861,14 @@ const STATUS_TEXTS = {
 
 /***/ }),
 
-/***/ 3209:
+/***/ 7610:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HTTPResponse = void 0;
-const SecurityDetails_js_1 = __webpack_require__(7253);
+const SecurityDetails_js_1 = __webpack_require__(6818);
 /**
  * The HTTPResponse class represents responses which are received by the
  * {@link Page} class.
@@ -37023,7 +37023,7 @@ exports.HTTPResponse = HTTPResponse;
 
 /***/ }),
 
-/***/ 1071:
+/***/ 3686:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -37045,8 +37045,8 @@ exports.HTTPResponse = HTTPResponse;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Touchscreen = exports.Mouse = exports.Keyboard = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const USKeyboardLayout_js_1 = __webpack_require__(7457);
+const assert_js_1 = __webpack_require__(2279);
+const USKeyboardLayout_js_1 = __webpack_require__(7380);
 /**
  * Keyboard provides an api for managing a virtual keyboard.
  * The high level api is {@link Keyboard."type"},
@@ -37507,7 +37507,7 @@ exports.Touchscreen = Touchscreen;
 
 /***/ }),
 
-/***/ 9724:
+/***/ 1133:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -37529,9 +37529,9 @@ exports.Touchscreen = Touchscreen;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ElementHandle = exports.JSHandle = exports.createJSHandle = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const QueryHandler_js_1 = __webpack_require__(446);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const QueryHandler_js_1 = __webpack_require__(9336);
 /**
  * @internal
  */
@@ -38261,7 +38261,7 @@ function computeQuadArea(quad) {
 
 /***/ }),
 
-/***/ 7759:
+/***/ 5136:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -38283,12 +38283,12 @@ function computeQuadArea(quad) {
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LifecycleWatcher = void 0;
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const Errors_js_1 = __webpack_require__(9749);
-const FrameManager_js_1 = __webpack_require__(5637);
-const NetworkManager_js_1 = __webpack_require__(8965);
-const Connection_js_1 = __webpack_require__(3772);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const Errors_js_1 = __webpack_require__(3162);
+const FrameManager_js_1 = __webpack_require__(8045);
+const NetworkManager_js_1 = __webpack_require__(377);
+const Connection_js_1 = __webpack_require__(9504);
 const puppeteerToProtocolLifecycle = new Map([
     ['load', 'load'],
     ['domcontentloaded', 'DOMContentLoaded'],
@@ -38417,7 +38417,7 @@ exports.LifecycleWatcher = LifecycleWatcher;
 
 /***/ }),
 
-/***/ 8965:
+/***/ 377:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -38439,11 +38439,11 @@ exports.NetworkManager = exports.NetworkManagerEmittedEvents = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const EventEmitter_js_1 = __webpack_require__(5039);
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const HTTPRequest_js_1 = __webpack_require__(7102);
-const HTTPResponse_js_1 = __webpack_require__(3209);
+const EventEmitter_js_1 = __webpack_require__(3112);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const HTTPRequest_js_1 = __webpack_require__(6662);
+const HTTPResponse_js_1 = __webpack_require__(7610);
 /**
  * We use symbols to prevent any external parties listening to these events.
  * They are internal to Puppeteer.
@@ -38690,7 +38690,7 @@ exports.NetworkManager = NetworkManager;
 
 /***/ }),
 
-/***/ 697:
+/***/ 937:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -38732,7 +38732,7 @@ exports.paperFormats = {
 
 /***/ }),
 
-/***/ 2645:
+/***/ 9626:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -38775,24 +38775,24 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Page = void 0;
 const fs = __importStar(__webpack_require__(5747));
 const util_1 = __webpack_require__(1669);
-const EventEmitter_js_1 = __webpack_require__(5039);
-const Connection_js_1 = __webpack_require__(3772);
-const Dialog_js_1 = __webpack_require__(2076);
-const EmulationManager_js_1 = __webpack_require__(7064);
-const FrameManager_js_1 = __webpack_require__(5637);
-const Input_js_1 = __webpack_require__(1071);
-const Tracing_js_1 = __webpack_require__(2776);
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const Coverage_js_1 = __webpack_require__(1771);
-const WebWorker_js_1 = __webpack_require__(5630);
-const JSHandle_js_1 = __webpack_require__(9724);
-const NetworkManager_js_1 = __webpack_require__(8965);
-const Accessibility_js_1 = __webpack_require__(7098);
-const TimeoutSettings_js_1 = __webpack_require__(8321);
-const FileChooser_js_1 = __webpack_require__(7947);
-const ConsoleMessage_js_1 = __webpack_require__(9213);
-const PDFOptions_js_1 = __webpack_require__(697);
+const EventEmitter_js_1 = __webpack_require__(3112);
+const Connection_js_1 = __webpack_require__(9504);
+const Dialog_js_1 = __webpack_require__(8309);
+const EmulationManager_js_1 = __webpack_require__(7421);
+const FrameManager_js_1 = __webpack_require__(8045);
+const Input_js_1 = __webpack_require__(3686);
+const Tracing_js_1 = __webpack_require__(149);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const Coverage_js_1 = __webpack_require__(7334);
+const WebWorker_js_1 = __webpack_require__(7034);
+const JSHandle_js_1 = __webpack_require__(1133);
+const NetworkManager_js_1 = __webpack_require__(377);
+const Accessibility_js_1 = __webpack_require__(5503);
+const TimeoutSettings_js_1 = __webpack_require__(3485);
+const FileChooser_js_1 = __webpack_require__(3176);
+const ConsoleMessage_js_1 = __webpack_require__(9770);
+const PDFOptions_js_1 = __webpack_require__(937);
 const writeFileAsync = util_1.promisify(fs.writeFile);
 class ScreenshotTaskQueue {
     constructor() {
@@ -40122,7 +40122,7 @@ function convertPrintParameterToInches(parameter) {
 
 /***/ }),
 
-/***/ 8727:
+/***/ 8388:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -40147,12 +40147,12 @@ exports.Puppeteer = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const Launcher_js_1 = __importDefault(__webpack_require__(258));
-const BrowserFetcher_js_1 = __webpack_require__(2922);
-const Errors_js_1 = __webpack_require__(9749);
-const DeviceDescriptors_js_1 = __webpack_require__(6134);
-const QueryHandler_js_1 = __webpack_require__(446);
-const revisions_js_1 = __webpack_require__(975);
+const Launcher_js_1 = __importDefault(__webpack_require__(9700));
+const BrowserFetcher_js_1 = __webpack_require__(6774);
+const Errors_js_1 = __webpack_require__(3162);
+const DeviceDescriptors_js_1 = __webpack_require__(2324);
+const QueryHandler_js_1 = __webpack_require__(9336);
+const revisions_js_1 = __webpack_require__(509);
 /**
  * The main Puppeteer class. Provides the {@link Puppeteer.launch | launch}
  * method to launch a browser.
@@ -40392,7 +40392,7 @@ exports.Puppeteer = Puppeteer;
 
 /***/ }),
 
-/***/ 446:
+/***/ 9336:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -40463,7 +40463,7 @@ exports.getQueryHandlerAndSelector = getQueryHandlerAndSelector;
 
 /***/ }),
 
-/***/ 7253:
+/***/ 6818:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -40547,7 +40547,7 @@ exports.SecurityDetails = SecurityDetails;
 
 /***/ }),
 
-/***/ 3632:
+/***/ 1501:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -40569,8 +40569,8 @@ exports.SecurityDetails = SecurityDetails;
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Target = void 0;
-const Page_js_1 = __webpack_require__(2645);
-const WebWorker_js_1 = __webpack_require__(5630);
+const Page_js_1 = __webpack_require__(9626);
+const WebWorker_js_1 = __webpack_require__(7034);
 /**
  * @public
  */
@@ -40696,7 +40696,7 @@ exports.Target = Target;
 
 /***/ }),
 
-/***/ 8321:
+/***/ 3485:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -40751,7 +40751,7 @@ exports.TimeoutSettings = TimeoutSettings;
 
 /***/ }),
 
-/***/ 2776:
+/***/ 149:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -40773,8 +40773,8 @@ exports.Tracing = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
 /**
  * The Tracing class exposes the tracing audit interface.
  * @remarks
@@ -40857,7 +40857,7 @@ exports.Tracing = Tracing;
 
 /***/ }),
 
-/***/ 7457:
+/***/ 7380:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -41271,7 +41271,7 @@ exports.keyDefinitions = {
 
 /***/ }),
 
-/***/ 138:
+/***/ 6926:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -41320,7 +41320,7 @@ exports.WebSocketTransport = WebSocketTransport;
 
 /***/ }),
 
-/***/ 5630:
+/***/ 7034:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -41342,10 +41342,10 @@ exports.WebWorker = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const EventEmitter_js_1 = __webpack_require__(5039);
-const helper_js_1 = __webpack_require__(1184);
-const ExecutionContext_js_1 = __webpack_require__(4164);
-const JSHandle_js_1 = __webpack_require__(9724);
+const EventEmitter_js_1 = __webpack_require__(3112);
+const helper_js_1 = __webpack_require__(6493);
+const ExecutionContext_js_1 = __webpack_require__(6823);
+const JSHandle_js_1 = __webpack_require__(1133);
 /**
  * The WebWorker class represents a
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API | WebWorker}.
@@ -41440,7 +41440,7 @@ exports.WebWorker = WebWorker;
 
 /***/ }),
 
-/***/ 7692:
+/***/ 2279:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -41475,7 +41475,7 @@ exports.assert = (value, message) => {
 
 /***/ }),
 
-/***/ 1184:
+/***/ 6493:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -41516,11 +41516,11 @@ exports.helper = exports.debugError = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const Errors_js_1 = __webpack_require__(9749);
-const Debug_js_1 = __webpack_require__(5490);
+const Errors_js_1 = __webpack_require__(3162);
+const Debug_js_1 = __webpack_require__(7061);
 const fs = __importStar(__webpack_require__(5747));
 const util_1 = __webpack_require__(1669);
-const assert_js_1 = __webpack_require__(7692);
+const assert_js_1 = __webpack_require__(2279);
 const openAsync = util_1.promisify(fs.open);
 const writeAsync = util_1.promisify(fs.write);
 const closeAsync = util_1.promisify(fs.close);
@@ -41689,7 +41689,7 @@ exports.helper = {
 
 /***/ }),
 
-/***/ 2777:
+/***/ 5819:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -41718,7 +41718,7 @@ exports.isNode = !!(typeof process !== 'undefined' &&
 
 /***/ }),
 
-/***/ 1662:
+/***/ 9574:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -41739,14 +41739,14 @@ exports.isNode = !!(typeof process !== 'undefined' &&
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const initialize_js_1 = __webpack_require__(2382);
-const puppeteer = initialize_js_1.initializePuppeteer('puppeteer');
+const initialize_js_1 = __webpack_require__(2522);
+const puppeteer = initialize_js_1.initializePuppeteer('puppeteer-core');
 exports.default = puppeteer;
 
 
 /***/ }),
 
-/***/ 2382:
+/***/ 2522:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -41771,8 +41771,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.initializePuppeteer = void 0;
-const Puppeteer_js_1 = __webpack_require__(8727);
-const revisions_js_1 = __webpack_require__(975);
+const Puppeteer_js_1 = __webpack_require__(8388);
+const revisions_js_1 = __webpack_require__(509);
 const pkg_dir_1 = __importDefault(__webpack_require__(8098));
 exports.initializePuppeteer = (packageName) => {
     const puppeteerRootDirectory = pkg_dir_1.default.sync(__dirname);
@@ -41792,7 +41792,7 @@ exports.initializePuppeteer = (packageName) => {
 
 /***/ }),
 
-/***/ 2922:
+/***/ 6774:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -41844,13 +41844,13 @@ const childProcess = __importStar(__webpack_require__(3129));
 const https = __importStar(__webpack_require__(7211));
 const http = __importStar(__webpack_require__(8605));
 const extract_zip_1 = __importDefault(__webpack_require__(460));
-const Debug_js_1 = __webpack_require__(5490);
+const Debug_js_1 = __webpack_require__(7061);
 const util_1 = __webpack_require__(1669);
 const rimraf_1 = __importDefault(__webpack_require__(4959));
 const URL = __importStar(__webpack_require__(8835));
 const https_proxy_agent_1 = __importDefault(__webpack_require__(3436));
 const proxy_from_env_1 = __webpack_require__(3329);
-const assert_js_1 = __webpack_require__(7692);
+const assert_js_1 = __webpack_require__(2279);
 const debugFetcher = Debug_js_1.debug(`puppeteer:fetcher`);
 const downloadURLs = {
     chrome: {
@@ -42292,7 +42292,7 @@ function httpRequest(url, method, response) {
 
 /***/ }),
 
-/***/ 9788:
+/***/ 6406:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -42336,16 +42336,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BrowserRunner = void 0;
-const Debug_js_1 = __webpack_require__(5490);
+const Debug_js_1 = __webpack_require__(7061);
 const rimraf_1 = __importDefault(__webpack_require__(4959));
 const childProcess = __importStar(__webpack_require__(3129));
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const Connection_js_1 = __webpack_require__(3772);
-const WebSocketTransport_js_1 = __webpack_require__(138);
-const PipeTransport_js_1 = __webpack_require__(6343);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const Connection_js_1 = __webpack_require__(9504);
+const WebSocketTransport_js_1 = __webpack_require__(6926);
+const PipeTransport_js_1 = __webpack_require__(571);
 const readline = __importStar(__webpack_require__(1058));
-const Errors_js_1 = __webpack_require__(9749);
+const Errors_js_1 = __webpack_require__(3162);
 const util_1 = __webpack_require__(1669);
 const removeFolderAsync = util_1.promisify(rimraf_1.default);
 const debugLauncher = Debug_js_1.debug('puppeteer:launcher');
@@ -42520,7 +42520,7 @@ function waitForWSEndpoint(browserProcess, timeout, preferredRevision) {
 
 /***/ }),
 
-/***/ 258:
+/***/ 9700:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -42566,13 +42566,13 @@ const http = __importStar(__webpack_require__(8605));
 const https = __importStar(__webpack_require__(7211));
 const URL = __importStar(__webpack_require__(8835));
 const fs = __importStar(__webpack_require__(5747));
-const BrowserFetcher_js_1 = __webpack_require__(2922);
-const Connection_js_1 = __webpack_require__(3772);
-const Browser_js_1 = __webpack_require__(3956);
-const assert_js_1 = __webpack_require__(7692);
-const helper_js_1 = __webpack_require__(1184);
-const WebSocketTransport_js_1 = __webpack_require__(138);
-const BrowserRunner_js_1 = __webpack_require__(9788);
+const BrowserFetcher_js_1 = __webpack_require__(6774);
+const Connection_js_1 = __webpack_require__(9504);
+const Browser_js_1 = __webpack_require__(755);
+const assert_js_1 = __webpack_require__(2279);
+const helper_js_1 = __webpack_require__(6493);
+const WebSocketTransport_js_1 = __webpack_require__(6926);
+const BrowserRunner_js_1 = __webpack_require__(6406);
 const util_1 = __webpack_require__(1669);
 const mkdtempAsync = util_1.promisify(fs.mkdtemp);
 const writeFileAsync = util_1.promisify(fs.writeFile);
@@ -43103,7 +43103,7 @@ exports.default = Launcher;
 
 /***/ }),
 
-/***/ 6343:
+/***/ 571:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -43125,7 +43125,7 @@ exports.PipeTransport = void 0;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const helper_js_1 = __webpack_require__(1184);
+const helper_js_1 = __webpack_require__(6493);
 class PipeTransport {
     constructor(pipeWrite, pipeRead) {
         this._pipeWrite = pipeWrite;
@@ -43175,7 +43175,7 @@ exports.PipeTransport = PipeTransport;
 
 /***/ }),
 
-/***/ 975:
+/***/ 509:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -43205,7 +43205,7 @@ exports.PUPPETEER_REVISIONS = {
 
 /***/ }),
 
-/***/ 8787:
+/***/ 5108:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -55043,7 +55043,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(2186));
 const server_1 = __webpack_require__(6660);
 const pdf_merger_js_1 = __importDefault(__webpack_require__(1502));
-const puppeteer_1 = __importDefault(__webpack_require__(9014));
+const puppeteer_core_1 = __importDefault(__webpack_require__(3435));
 const constants_1 = __webpack_require__(9042);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -55056,7 +55056,7 @@ function run() {
             console.log('options: ' + options);
             const pdfOptions = JSON.parse(options);
             console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4));
-            const browser = yield puppeteer_1.default.launch({
+            const browser = yield puppeteer_core_1.default.launch({
                 executablePath: '/usr/bin/google-chrome-unstable',
                 args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
@@ -55147,7 +55147,7 @@ class Server {
             const contentType = this.mimeTypes[extname] || 'application/octet-stream';
             fs_1.default.readFile(filePath, (error, content) => {
                 if (error) {
-                    console.log('Error: ' + error);
+                    console.log('Server Error: ' + error);
                     if (error.code === 'ENOENT') {
                         response.writeHead(404);
                         response.end('404');

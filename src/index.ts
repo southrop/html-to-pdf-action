@@ -44,11 +44,7 @@ async function run(): Promise<void> {
             const pageUrl = input.startsWith('http')
                 ? input
                 : `http://localhost:${PORT}/${input}`
-            await tab
-                .goto(pageUrl, { waitUntil: 'networkidle0' })
-                .catch(reason => {
-                    console.log(reason)
-                })
+            await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
 
             const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
             await tab.pdf(pageOptions)

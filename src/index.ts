@@ -1,4 +1,6 @@
 import * as core from '@actions/core'
+import * as fs from 'fs'
+import * as path from 'path'
 import { Server } from './server'
 import PDFMerger from 'pdf-merger-js'
 import puppeteer from 'puppeteer'
@@ -62,6 +64,11 @@ async function run(): Promise<void> {
 
         if (!outputPath.endsWith('.pdf')) {
             outputPath += '.pdf' // append file extension
+        }
+
+        const folder = path.parse(outputPath).dir
+        if (!fs.existsSync(folder)) {
+            fs.mkdirSync(folder)
         }
 
         console.log(`Saving merged PDF to ${outputPath}`)

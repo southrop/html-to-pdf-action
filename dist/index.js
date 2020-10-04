@@ -70316,6 +70316,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(2186));
+const fs = __importStar(__webpack_require__(5747));
+const path = __importStar(__webpack_require__(5622));
 const server_1 = __webpack_require__(6660);
 const pdf_merger_js_1 = __importDefault(__webpack_require__(1502));
 const puppeteer_1 = __importDefault(__webpack_require__(818));
@@ -70369,6 +70371,10 @@ function run() {
             yield browser.close();
             if (!outputPath.endsWith('.pdf')) {
                 outputPath += '.pdf'; // append file extension
+            }
+            const folder = path.parse(outputPath).dir;
+            if (!fs.existsSync(folder)) {
+                fs.mkdirSync(folder);
             }
             console.log(`Saving merged PDF to ${outputPath}`);
             yield merger.save(outputPath);

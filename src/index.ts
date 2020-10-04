@@ -68,7 +68,7 @@ async function run(): Promise<void> {
 
         const folder = path.parse(outputPath).dir
         if (!fs.existsSync(folder)) {
-            fs.mkdirSync(folder)
+            fs.mkdirSync(folder, { recursive: true })
         }
 
         console.log(`Saving merged PDF to ${outputPath}`)

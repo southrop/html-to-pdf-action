@@ -1,3 +1,3 @@
-FROM buildkite/puppeteer:5.2.1
+FROM buildkite/puppeteer:v1.15.0
 RUN npm ci
 ENTRYPOINT ["node", "dist/index.js"]

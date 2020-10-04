@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "clean": "ncc cache clean",
     "release": "ncc build src/index.ts",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",

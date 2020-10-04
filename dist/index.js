@@ -70373,7 +70373,7 @@ function run() {
                 outputPath += '.pdf'; // append file extension
             }
             const folder = path.parse(outputPath).dir;
-            if (!fs.existsSync(folder)) {
+            if (folder.length > 0 && !fs.existsSync(folder)) {
                 console.log(`Folder ${folder} doesn't exist. Creating`);
                 fs.mkdirSync(folder, { recursive: true });
             }

@@ -46,8 +46,8 @@ async function run(): Promise<void> {
                 : `http://localhost:${PORT}/${inputArray[index]}`
             await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
 
-            const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
-            await tab.pdf(pageOptions)
+            //const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
+            await tab.pdf({ path: `./page${index}.pdf` })
 
             merger.add(`page${index}.pdf`)
         }

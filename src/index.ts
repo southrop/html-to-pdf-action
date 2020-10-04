@@ -17,7 +17,11 @@ async function run(): Promise<void> {
         const pdfOptions = JSON.parse(options)
         console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4))
 
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            executablePath:
+                '/home/runner/work/html-to-pdf-action/html-to-pdf-action/node_modules/puppeteer/.local-chromium/linux-800071',
+            args: ['--no-sandbox', '--headless', '--disable-gpu']
+        })
         const tab = await browser.newPage()
         const merger = new PDFMerger()
 

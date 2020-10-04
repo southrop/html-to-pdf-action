@@ -14,8 +14,10 @@ inputs:
     required: false
     default: '{}'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  # using: 'node12'
+  # main: 'dist/index.js'
+  using: docker
+  image: Dockerfile
 branding:
   color: red
   icon: file-text

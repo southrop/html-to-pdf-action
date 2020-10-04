@@ -6,10 +6,6 @@ jobs:
     name: A job to test this action
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - run: npm ci
     - uses: southrop/html-to-pdf-action@main
       with:
         inputPaths: 'index.html,about/index.html'

@@ -1,4 +1,4 @@
-import * as fs from 'fs'
+import { readFile } from 'fs'
 import * as http from 'http'
 import * as path from 'path'
 import { PORT } from './constants'
@@ -37,7 +37,7 @@ export class Server {
                 const contentType =
                     this.mimeTypes[extname] || 'application/octet-stream'
 
-                fs.readFile(filePath, (error, content) => {
+                readFile(filePath, (error, content) => {
                     if (error) {
                         console.log('Server Error: ' + error)
                         if (error.code === 'ENOENT') {

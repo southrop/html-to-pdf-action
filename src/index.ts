@@ -46,8 +46,8 @@ async function run(): Promise<void> {
             await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
 
             console.log(`Printing page ${index} to ./page${index}.pdf`)
-            //const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
-            await tab.pdf({ path: `./page${index}.pdf` })
+            const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
+            await tab.pdf(pageOptions)
 
             console.log(`Adding page ${index} to binder`)
             merger.add(`page${index}.pdf`)

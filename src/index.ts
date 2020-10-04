@@ -54,14 +54,17 @@ async function run(): Promise<void> {
         }
 
         if (server !== undefined) {
+            console.log('Closing server')
             server.close()
         }
+        console.log('Closing browser')
         await browser.close()
 
         if (!outputPath.endsWith('.pdf')) {
             outputPath += '.pdf' // append file extension
         }
 
+        console.log(`Saving merged PDF to ${outputPath}`)
         await merger.save(outputPath)
     } catch (error) {
         core.setFailed(`Action failed with error: ${error}`)

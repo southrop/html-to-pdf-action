@@ -70362,12 +70362,15 @@ function run() {
                 merger.add(`page${index}.pdf`);
             }
             if (server !== undefined) {
+                console.log('Closing server');
                 server.close();
             }
+            console.log('Closing browser');
             yield browser.close();
             if (!outputPath.endsWith('.pdf')) {
                 outputPath += '.pdf'; // append file extension
             }
+            console.log(`Saving merged PDF to ${outputPath}`);
             yield merger.save(outputPath);
         }
         catch (error) {

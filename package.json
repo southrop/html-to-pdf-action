@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "get-stream": "^6.0.0",
     "pdf-merger-js": "^3.0.5",
     "puppeteer": "^1.15.0"
   },

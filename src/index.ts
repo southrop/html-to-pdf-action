@@ -18,7 +18,7 @@ async function run(): Promise<void> {
         console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4))
 
         const browser = await puppeteer.launch({
-            executablePath: puppeteer.executablePath(),
+            executablePath: '/usr/bin/google-chrome-unstable', // puppeteer.executablePath(),
             args: ['--no-sandbox', '--headless', '--disable-gpu']
         })
         const tab = await browser.newPage()

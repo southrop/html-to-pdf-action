@@ -7,6 +7,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: southrop/html-to-pdf-action@main
+      env:
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
       with:
         inputPaths: 'example/index.html,example/about/index.html'
         outputPath: pdf/print.pdf

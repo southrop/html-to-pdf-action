@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import { Server } from './server'
 import PDFMerger from 'pdf-merger-js'
-import puppeteer from 'puppeteer-core'
+import puppeteer from 'puppeteer'
 import { PORT } from './constants'
 
 async function run(): Promise<void> {

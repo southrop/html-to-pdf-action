@@ -55057,7 +55057,6 @@ function run() {
             const pdfOptions = JSON.parse(options);
             console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4));
             const browser = yield puppeteer_1.default.launch({
-                executablePath: '/home/runner/work/html-to-pdf-action/html-to-pdf-action/node_modules/puppeteer/.local-chromium/linux-800071',
                 args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
             const tab = yield browser.newPage();

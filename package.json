@@ -6,7 +6,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "pdf-merger-js": "^3.0.5",
-    "puppeteer-core": "^5.3.1"
+    "puppeteer-core": "^1.15.0"
   },
   "devDependencies": {
     "@types/node": "^14.11.2",

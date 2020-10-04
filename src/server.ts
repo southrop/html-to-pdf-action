@@ -39,7 +39,7 @@ export class Server {
 
                 fs.readFile(filePath, (error, content) => {
                     if (error) {
-                        console.log('Error: ' + error)
+                        console.log('Server Error: ' + error)
                         if (error.code === 'ENOENT') {
                             response.writeHead(404)
                             response.end('404')

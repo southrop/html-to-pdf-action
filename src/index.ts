@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import { Server } from './server'
 import PDFMerger from 'pdf-merger-js'
-import puppeteer from 'puppeteer'
+import puppeteer from 'puppeteer-core'
 import { PORT } from './constants'
 
 async function run(): Promise<void> {
@@ -44,7 +44,11 @@ async function run(): Promise<void> {
             const pageUrl = input.startsWith('http')
                 ? input
                 : `http://localhost:${PORT}/${input}`
-            await tab.goto(pageUrl, { waitUntil: 'networkidle0' })
+            await tab
+                .goto(pageUrl, { waitUntil: 'networkidle0' })
+                .catch(reason => {
+                    console.log(reason)
+                })
 
             const pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
             await tab.pdf(pageOptions)

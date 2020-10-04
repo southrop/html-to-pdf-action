@@ -70374,7 +70374,8 @@ function run() {
             }
             const folder = path.parse(outputPath).dir;
             if (!fs.existsSync(folder)) {
-                fs.mkdirSync(folder);
+                console.log(`Folder ${folder} doesn't exist. Creating`);
+                fs.mkdirSync(folder, { recursive: true });
             }
             console.log(`Saving merged PDF to ${outputPath}`);
             yield merger.save(outputPath);

@@ -68,6 +68,7 @@ async function run(): Promise<void> {
 
         const folder = path.parse(outputPath).dir
         if (!fs.existsSync(folder)) {
+            console.log(`Folder ${folder} doesn't exist. Creating`)
             fs.mkdirSync(folder, { recursive: true })
         }
 

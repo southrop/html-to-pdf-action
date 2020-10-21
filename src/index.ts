@@ -58,11 +58,16 @@ async function run(): Promise<void> {
             console.log(`Printing page ${index} to ./page${index}.pdf`)
             let pageOptions = { ...pdfOptions, path: `./page${index}.pdf` }
             if (Object.prototype.hasOwnProperty.call(pageOptionsArr, index)) {
-                const additionalOptions = JSON.parse(pageOptionsArr[index])
-                if (additionalOptions !== {}) {
-                    pageOptions = { ...pageOptions, ...additionalOptions }
+                try {
+                    const additionalOptions = JSON.parse(pageOptionsArr[index])
+                    if (additionalOptions !== {}) {
+                        pageOptions = { ...pageOptions, ...additionalOptions }
+                    }
+                } catch (e) {
+                    // no options
                 }
             }
+            console.log(`Options: ${JSON.stringify(pageOptions, null, 4)}`)
             await tab.pdf(pageOptions)
 
             console.log(`Adding page ${index} to binder`)

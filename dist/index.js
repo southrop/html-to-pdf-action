@@ -70365,11 +70365,17 @@ function run() {
                 console.log(`Printing page ${index} to ./page${index}.pdf`);
                 let pageOptions = Object.assign(Object.assign({}, pdfOptions), { path: `./page${index}.pdf` });
                 if (Object.prototype.hasOwnProperty.call(pageOptionsArr, index)) {
-                    const additionalOptions = JSON.parse(pageOptionsArr[index]);
-                    if (additionalOptions !== {}) {
-                        pageOptions = Object.assign(Object.assign({}, pageOptions), additionalOptions);
+                    try {
+                        const additionalOptions = JSON.parse(pageOptionsArr[index]);
+                        if (additionalOptions !== {}) {
+                            pageOptions = Object.assign(Object.assign({}, pageOptions), additionalOptions);
+                        }
+                    }
+                    catch (e) {
+                        // no options
                     }
                 }
+                console.log(`Options: ${JSON.stringify(pageOptions, null, 4)}`);
                 yield tab.pdf(pageOptions);
                 console.log(`Adding page ${index} to binder`);
                 merger.add(`page${index}.pdf`);

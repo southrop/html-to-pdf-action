@@ -70318,47 +70318,58 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(2186));
 const fs = __importStar(__webpack_require__(5747));
 const path = __importStar(__webpack_require__(5622));
-const server_1 = __webpack_require__(6660);
 const pdf_merger_js_1 = __importDefault(__webpack_require__(1502));
 const puppeteer_1 = __importDefault(__webpack_require__(818));
 const constants_1 = __webpack_require__(9042);
+const server_1 = __webpack_require__(6660);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const inputPaths = core.getInput('inputPaths');
+            const input = core.getInput('input');
             let outputPath = core.getInput('outputPath');
-            const options = core.getInput('puppeteerOptions');
-            console.log('inputPaths: ' + inputPaths);
-            console.log('outputPath: ' + outputPath);
-            console.log('options: ' + options);
-            const pdfOptions = JSON.parse(options);
-            console.log('optionsObj: ' + JSON.stringify(pdfOptions, null, 4));
+            const pageOptions = core.getInput('pageOptions');
+            const globalOptions = core.getInput('globalOptions');
+            console.log(`inputPaths: ${input}`);
+            console.log(`outputPath: ${outputPath}`);
+            console.log(`pageOptions: ${pageOptions}`);
+            const pdfOptions = JSON.parse(globalOptions);
+            console.log(`global: ${JSON.stringify(pdfOptions, null, 4)}`);
             const browser = yield puppeteer_1.default.launch({
                 executablePath: '/usr/bin/google-chrome-unstable',
                 args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
             const tab = yield browser.newPage();
             const merger = new pdf_merger_js_1.default();
-            const inputArray = inputPaths.split(',');
-            let isLocal = false;
-            inputArray.some(input => {
+            const inputArr = input.split(',');
+            let hasLocalPages = false;
+            inputArr.some(input => {
                 if (!input.startsWith('http')) {
-                    isLocal = true;
+                    hasLocalPages = true;
                     return true;
                 }
             });
             let server;
-            if (isLocal) {
+            if (hasLocalPages) {
                 server = new server_1.Server(process.cwd()); // start local server
             }
-            for (const index in inputArray) {
-                console.log(`Loading page ${index}: ${inputArray[index]}`);
-                const pageUrl = inputArray[index].startsWith('http')
-                    ? inputArray[index]
-                    : `http://localhost:${constants_1.PORT}/${inputArray[index]}`;
+            let pageOptionsArr = [];
+            if (pageOptions !== '') {
+                pageOptionsArr = pageOptions.split(',');
+            }
+            for (const index in inputArr) {
+                console.log(`Loading page ${index}: ${inputArr[index]}`);
+                const pageUrl = inputArr[index].startsWith('http')
+                    ? inputArr[index]
+                    : `http://localhost:${constants_1.PORT}/${inputArr[index]}`;
                 yield tab.goto(pageUrl, { waitUntil: 'networkidle0' });
                 console.log(`Printing page ${index} to ./page${index}.pdf`);
-                const pageOptions = Object.assign(Object.assign({}, pdfOptions), { path: `./page${index}.pdf` });
+                let pageOptions = Object.assign(Object.assign({}, pdfOptions), { path: `./page${index}.pdf` });
+                if (Object.prototype.hasOwnProperty.call(pageOptionsArr, index)) {
+                    const additionalOptions = JSON.parse(pageOptionsArr[index]);
+                    if (additionalOptions !== {}) {
+                        pageOptions = Object.assign(Object.assign({}, pageOptions), additionalOptions);
+                    }
+                }
                 yield tab.pdf(pageOptions);
                 console.log(`Adding page ${index} to binder`);
                 merger.add(`page${index}.pdf`);
@@ -70442,7 +70453,7 @@ class Server {
         };
         this.server = http
             .createServer((request, response) => {
-            console.log('Request: ' + request.url);
+            //console.log('Request: ' + request.url)
             let filePath = path.join(rootPath, request.url || '');
             if (request.url === '/') {
                 filePath = path.join(rootPath, 'index.html');

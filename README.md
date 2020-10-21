@@ -4,9 +4,10 @@ A Github Action to print HTML files to PDF format using Puppeteer.
 
 ## Inputs
 
-* `inputPaths` - (Required) A comma separated list of paths of the HTML files to print
-* `outputPath`- (Optional) The desired path in the repo for the resultant PDF to be added to
-* `puppeteerOptions`- (Optional) JSON options to be passed directly to Puppeteer (see [Puppeteer API](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions))
+* `input` - (Required) Comma separated list of paths/URLs to print
+* `outputPath`- (Optional) Desired path in the repo for the printed PDF to be added to
+* `pageOptions` - (Optional) Comma separated list of JSON options to be passed to Puppeteer to be used for specific pages (see [Puppeteer API](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions))
+* `globalOptions`- (Optional) JSON options to be passed to Puppeteer to be used for all pages (see [Puppeteer API](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagepdfoptions))
 
 ## Example
 
@@ -28,9 +29,10 @@ jobs:
             ${{ runner.os }}-node-
       - uses: southrop/html-to-pdf-action@v1
         with:
-          inputPaths: 'index.html,about/index.html'
+          input: 'index.html,about/index.html'
           outputPath: pdf/print.pdf
-          puppeteerOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+          pageOptions: ',{"format": "Letter"}'
+          globalOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
       - run: |
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"

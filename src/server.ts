@@ -26,7 +26,7 @@ export class Server {
     constructor(rootPath: string) {
         this.server = http
             .createServer((request, response) => {
-                console.log('Request: ' + request.url)
+                //console.log('Request: ' + request.url)
 
                 let filePath = path.join(rootPath, request.url || '')
                 if (request.url === '/') {
